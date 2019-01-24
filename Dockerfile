@@ -38,7 +38,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     sudo mkdir -p /home/user/jdtls/data && \
     sudo chgrp -R 0 ${HOME} && \
     sudo chmod -R g+rwX ${HOME} && \
-    echo '[supervisord]\n\
+    sudo echo '[supervisord]\n\
 nodaemon=true\n\
 \n\
 [program:X11]\n\
