@@ -12,11 +12,11 @@ ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
 #    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
+#    git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
+#    git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --upgrade apk-tools && \
     apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git && \
-    git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
-    git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
     rm -rf /root/noVNC/.git && \
     rm -rf /root/noVNC/utils/websockify/.git && \
     apk del git && \
@@ -61,7 +61,7 @@ autorestart=true\n\
 \n\
 [program:demo]\n\
 command=xterm\n\
-autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
+autorestart=true' >> /dev/null #/etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 8000 8080 6080 32745
 
