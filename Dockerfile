@@ -17,9 +17,6 @@ ENV PATH=${PATH}:${M2_HOME}/bin
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --upgrade apk-tools && \
     apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git && \
-    rm -rf /root/noVNC/.git && \
-    rm -rf /root/noVNC/utils/websockify/.git && \
-    apk del git && \
     curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
     cd /tmp && \
@@ -31,6 +28,11 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     adduser -S user -h /home/user -s /bin/bash -G root -u 1000 && \
     echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     usermod -p "*" user && \
+    sudo git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
+    sudo git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
+    rm -rf /root/noVNC/.git && \
+    rm -rf /root/noVNC/utils/websockify/.git && \
+    apk del git && \
     sudo chown -R user /home/user/ && \
     sudo mkdir -p /home/user/.m2 && \
     sudo mkdir -p /home/user/jdtls/data && \
