@@ -12,7 +12,8 @@ ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    apk add --update --upgrade apk-tools@edge sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
+    apk add --upgrade apk-tools && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
     git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
     git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
     rm -rf /root/noVNC/.git && \
