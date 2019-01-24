@@ -1,4 +1,4 @@
-FROM openjdk:8u111-jre-alpine
+FROM openjdk:8u191-jdk-alpine3.8
 
 ENV LANG=C.UTF-8 \
     DOCKER_VERSION=1.6.0 \
@@ -11,12 +11,12 @@ ENV LANG=C.UTF-8 \
 ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
-#    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox socat supervisor x11vnc xterm xvfb && \
+#    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow && \
 #    git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
 #    git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-    apk add --upgrade apk-tools && \
-    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow && \
+    apk upgrade apk-tools && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox socat supervisor x11vnc xterm xvfb && \
     curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
     cd /tmp && \
