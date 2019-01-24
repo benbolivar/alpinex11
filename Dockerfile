@@ -39,7 +39,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     sudo chgrp -R 0 ${HOME} && \
     sudo chmod -R g+rwX ${HOME}
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 8000 8080 6080 32745
 
