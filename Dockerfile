@@ -63,7 +63,7 @@ autorestart=true\n\
 \n\
 [program:demo]\n\
 command=xterm\n\
-autorestart=true' /etc/supervisor/conf.d/supervisord.conf
+autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 8000 8080 6080 32745
 
