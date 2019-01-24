@@ -71,9 +71,9 @@ USER user
 
 WORKDIR /projects
 
-#CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
+CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
 
-CMD sudo /usr/bin/ssh-keygen -A && \
-    sudo /usr/sbin/sshd -D && \
-    sudo su - && \
-    tail -f /dev/null
+#CMD sudo /usr/bin/ssh-keygen -A && \
+#    sudo /usr/sbin/sshd -D && \
+#    sudo su - && \
+#    tail -f /dev/null
