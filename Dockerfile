@@ -37,33 +37,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     sudo mkdir -p /home/user/.m2 && \
     sudo mkdir -p /home/user/jdtls/data && \
     sudo chgrp -R 0 ${HOME} && \
-    sudo chmod -R g+rwX ${HOME} && \
-    sudo echo '[supervisord]\n\
-nodaemon=true\n\
-\n\
-[program:X11]\n\
-command=Xvfb :0 -screen 0 "%(ENV_DISPLAY_WIDTH)s"x"%(ENV_DISPLAY_HEIGHT)s"x24\n\
-autorestart=true\n\
-\n\
-[program:x11vnc]\n\
-command=/usr/bin/x11vnc\n\
-autorestart=true\n\
-\n\
-[program:novnc]\n\
-command=/root/noVNC/utils/launch.sh\n\
-autorestart=true\n\
-\n\
-[program:socat]\n\
-command=socat tcp-listen:6000,reuseaddr,fork unix:/tmp/.X11-unix/X0\n\
-autorestart=true\n\
-\n\
-[program:fluxbox]\n\
-command=fluxbox\n\
-autorestart=true\n\
-\n\
-[program:demo]\n\
-command=xterm\n\
-autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
+    sudo chmod -R g+rwX ${HOME}
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 8000 8080 6080 32745
 
