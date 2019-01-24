@@ -41,8 +41,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     sudo chmod 444 /etc/pki/tls/certs/novnc.pem
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ADD index.html  /opt/noVNC/
-ADD supervisord.conf /opt/
+ADD index.html  /root/noVNC/
 
 RUN sudo mkdir -p /home/user/KeepAlive
 ADD keepalive.html /home/user/KeepAlive
