@@ -11,12 +11,11 @@ ENV LANG=C.UTF-8 \
 ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
-#    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
 #    git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
 #    git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --upgrade apk-tools && \
-    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox socat supervisor x11vnc xterm xvfb && \
     curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
     cd /tmp && \
@@ -63,7 +62,7 @@ autorestart=true\n\
 \n\
 [program:demo]\n\
 command=xterm\n\
-autorestart=true' >> /dev/null #/etc/supervisor/conf.d/supervisord.conf
+autorestart=true' >> /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 8000 8080 6080 32745
 
@@ -71,9 +70,9 @@ USER user
 
 WORKDIR /projects
 
-#CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
+CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
 
-CMD sudo /usr/bin/ssh-keygen -A && \
-    sudo /usr/sbin/sshd -D && \
-    sudo su - && \
-    tail -f /dev/null
+#CMD sudo /usr/bin/ssh-keygen -A && \
+#    sudo /usr/sbin/sshd -D && \
+#    sudo su - && \
+#    tail -f /dev/null
