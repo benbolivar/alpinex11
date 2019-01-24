@@ -37,7 +37,11 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     sudo mkdir -p /home/user/.m2 && \
     sudo mkdir -p /home/user/jdtls/data && \
     sudo chgrp -R 0 ${HOME} && \
-    sudo chmod -R g+rwX ${HOME}
+    sudo chmod -R g+rwX ${HOME} && \
+    sudo mkdir -p /etc/pki/tls/certs && \
+    sudo openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/pki/tls/certs/novnc.pem -out /etc/pki/tls/certs/novnc.pem -days 3650 \
+         -subj "/C=PH/ST=Cebu/L=Cebu/O=NA/OU=NA/CN=codenvy.io" && \
+    sudo chmod 444 /etc/pki/tls/certs/novnc.pem
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
