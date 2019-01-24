@@ -11,7 +11,7 @@ ENV LANG=C.UTF-8 \
 ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+RUN echo "http://dl-6.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
     git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
     git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
