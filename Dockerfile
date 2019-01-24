@@ -13,7 +13,7 @@ ENV PATH=${PATH}:${M2_HOME}/bin
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk upgrade apk-tools && \
-    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git fluxbox socat supervisor x11vnc xterm xvfb && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git openbox socat supervisor x11vnc xterm xvfb && \
     curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
     cd /tmp && \
