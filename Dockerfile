@@ -11,9 +11,10 @@ ENV LANG=C.UTF-8 \
 ENV M2_HOME=/usr/lib/apache-maven-$MAVEN_VERSION
 ENV PATH=${PATH}:${M2_HOME}/bin
 
+#    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk add --upgrade apk-tools && \
-    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow fluxbox git socat supervisor x11vnc xterm xvfb && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git && \
     git clone https://github.com/kanaka/noVNC.git /root/noVNC && \
     git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
     rm -rf /root/noVNC/.git && \
@@ -68,9 +69,9 @@ USER user
 
 WORKDIR /projects
 
-CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
+#CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf & sleep 365d
 
-#CMD sudo /usr/bin/ssh-keygen -A && \
-#    sudo /usr/sbin/sshd -D && \
-#    sudo su - && \
-#    tail -f /dev/null
+CMD sudo /usr/bin/ssh-keygen -A && \
+    sudo /usr/sbin/sshd -D && \
+    sudo su - && \
+    tail -f /dev/null
