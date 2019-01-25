@@ -13,7 +13,7 @@ ENV PATH=${PATH}:${M2_HOME}/bin
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     apk upgrade apk-tools && \
-    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git openbox supervisor x11vnc xterm xvfb dbus-x11 && \
+    apk add --update sudo curl ca-certificates bash openssh unzip openssl shadow git blackbox supervisor x11vnc xterm xvfb dbus-x11 && \
     curl -sSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}" -o /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
     cd /tmp && \
@@ -42,6 +42,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD index.html  /root/noVNC/
+ADD blackbox-menu /etc/X11/blackbox/blackbox-menu
 
 RUN sudo mkdir -p /home/user/KeepAlive
 ADD keepalive.html /home/user/KeepAlive
