@@ -18,11 +18,7 @@
 [encoding] {UTF-8}
       [exec] (xterm) {xterm}
       [exec] (firefox) {}
-[submenu] (Net)
-[submenu] (IRC)
-      [exec]   (weechat) {xterm -e weechat}
-[end]
-[end]
+      [exec] (Eclipse CDT) {}
 [submenu] (Editors)
       [exec]   (vi) {xterm -e vi}
 [end]
