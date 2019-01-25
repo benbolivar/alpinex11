@@ -1,6 +1,0 @@
-[begin] (Blackbox)
-[exec] (Terminal)    {urxvt -fn "xft:Terminus:size=14"}
-[exec] (Browser)     {midori} \n \
-[exec] (Firefox)     {firefox} \n \
-[exec] (Eclipse CDT) {/opt/eclipse/eclipse}
-[end]
