@@ -1,4 +1,5 @@
-FROM openjdk:8u191-jdk-alpine3.8
+#FROM openjdk:8u191-jdk-alpine3.8
+FROM openjdk:13-ea-1-jdk-alpine3.8
 
 ENV LANG=C.UTF-8 \
     DOCKER_VERSION=1.6.0 \
@@ -42,6 +43,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD index.html  /root/noVNC/
+ADD menu  /home/user/.fluxbox
 
 RUN sudo mkdir -p /home/user/KeepAlive
 ADD keepalive.html /home/user/KeepAlive
