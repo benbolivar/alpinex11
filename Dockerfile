@@ -1,5 +1,5 @@
-#FROM openjdk:8u191-jdk-alpine3.8
-FROM openjdk:12-ea-25-jdk-alpine3.8
+FROM openjdk:8u191-jdk-alpine3.8
+#FROM openjdk:12-ea-25-jdk-alpine3.8
 
 ENV LANG=C.UTF-8 \
     DOCKER_VERSION=1.6.0 \
