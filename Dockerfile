@@ -43,7 +43,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD index.html  /root/noVNC/
-ADD menu  /home/user/.fluxbox
+#ADD menu  /home/user/.fluxbox
 
 RUN sudo mkdir -p /home/user/KeepAlive
 ADD keepalive.html /home/user/KeepAlive
